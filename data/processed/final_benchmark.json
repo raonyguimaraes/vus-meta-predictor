@@ -1,0 +1,31 @@
+{
+  "models": {
+    "AA only": {
+      "auroc": 0.888,
+      "auprc": 0.6645,
+      "n_features": 22
+    },
+    "AA + Conservation": {
+      "auroc": 0.9135,
+      "auprc": 0.7453,
+      "n_features": 24
+    },
+    "AA + AlphaMissense": {
+      "auroc": 0.9314,
+      "auprc": 0.7926,
+      "n_features": 23
+    },
+    "AA + ESM-2": {
+      "auroc": 0.8887,
+      "auprc": 0.6699,
+      "n_features": 26
+    },
+    "ALL FEATURES": {
+      "auroc": 0.9323,
+      "auprc": 0.8113,
+      "n_features": 29
+    }
+  },
+  "n_train": 86506,
+  "n_test": 123419
+}
