@@ -1,0 +1,62 @@
+# VUS Meta-Predictor Configuration
+# =================================
+
+# Data paths
+data:
+  clinvar_vcf: "data/raw/clinvar.vcf.gz"
+  dbnsfp: null  # Path to dbNSFP4.7a.gz (tabix-indexed)
+  gnomad_vcf: null  # Path to gnomAD sites VCF
+  genome_fasta: null  # Path to GRCh38 reference FASTA
+
+# Predictor settings
+predictors:
+  esm2:
+    enabled: true
+    model_name: "esm2_t33_650M_UR50D"
+    device: null  # auto-detect
+    context_window: 1022
+  
+  dnabert2:
+    enabled: true
+    model_name: "zhihan1996/DNABERT-2-117M"
+    window_size: 512
+  
+  nucleotide_transformer:
+    enabled: false  # Requires large GPU
+    model_name: "InstaDeepAI/nucleotide-transformer-v2-500m-multi-species"
+  
+  dbnsfp:
+    enabled: true
+  
+  gnomad:
+    enabled: true
+
+# Meta-learner settings
+meta_learner:
+  n_estimators: 500
+  max_depth: 6
+  learning_rate: 0.05
+  min_child_weight: 5
+  subsample: 0.8
+  colsample_bytree: 0.8
+  calibration_method: "isotonic"
+
+# Training settings
+training:
+  cv_folds: 5
+  min_review_stars: 1
+  exclude_conflicting: true
+  test_size: 0.15
+  random_state: 42
+
+# Classification thresholds
+thresholds:
+  pathogenic: 0.99
+  likely_pathogenic: 0.90
+  likely_benign: 0.10
+  benign: 0.01
+
+# Output
+output:
+  model_dir: "data/models/meta_v1"
+  results_dir: "data/processed"

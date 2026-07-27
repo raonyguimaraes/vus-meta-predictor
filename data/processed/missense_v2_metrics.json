@@ -1,0 +1,63 @@
+{
+  "cv_auroc": 0.8783620658242608,
+  "cv_auprc": 0.9379784704338319,
+  "cv_brier": 0.12393395875338777,
+  "fold_metrics": [
+    {
+      "fold": 0,
+      "auroc": 0.8615246990326592
+    },
+    {
+      "fold": 1,
+      "auroc": 0.9000085918468426
+    },
+    {
+      "fold": 2,
+      "auroc": 0.872850774782424
+    },
+    {
+      "fold": 3,
+      "auroc": 0.8736364604516479
+    },
+    {
+      "fold": 4,
+      "auroc": 0.8910182616677401
+    }
+  ],
+  "n_training": 4833,
+  "n_features": 38,
+  "n_vus": 2122119,
+  "mce": 0.01937016642976023,
+  "top_features": {
+    "gene_path_ratio": 0.10209890455007553,
+    "to_proline": 0.09399852156639099,
+    "from_cysteine": 0.09285245835781097,
+    "hydro_abs_change": 0.04782888665795326,
+    "is_autosome": 0.04109635204076767,
+    "mw_abs_change": 0.039378635585308075,
+    "hydro_change": 0.03598833456635475,
+    "grantham": 0.03164525330066681,
+    "aromatic_change": 0.02934081479907036,
+    "volume_abs_change": 0.028085973113775253,
+    "to_cysteine": 0.027133461087942123,
+    "from_proline": 0.026880240067839622,
+    "small_change": 0.0260334312915802,
+    "pI_abs_change": 0.025008296594023705,
+    "aa_position_log": 0.02499893307685852,
+    "gene_variant_count_log": 0.02377266250550747,
+    "polarity_abs_change": 0.023528752848505974,
+    "tiny_change": 0.023012442514300346,
+    "aa_position": 0.022591857239603996,
+    "polarity_change": 0.022545529529452324,
+    "volume_change": 0.021227752789855003,
+    "mw_change": 0.020507048815488815,
+    "positive_change": 0.02048446051776409,
+    "negative_change": 0.01966835930943489,
+    "pI_change": 0.01893836446106434,
+    "nonpolar_change": 0.018186388537287712,
+    "charged_change": 0.01723705604672432,
+    "from_glycine": 0.01709744893014431,
+    "is_transition": 0.016615627333521843,
+    "aliphatic_change": 0.01610361598432064
+  }
+}

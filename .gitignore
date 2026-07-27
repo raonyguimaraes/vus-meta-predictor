@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data files (too large for git)
+data/raw/
+data/models/
+data/cache/
+data/processed/*.tsv
+data/processed/*.csv
+*.bam
+*.bai
+*.fa
+*.fasta
+*.fai
+
+# Keep metrics JSONs
+!data/processed/*.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
