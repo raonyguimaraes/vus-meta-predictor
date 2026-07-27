@@ -655,3 +655,117 @@ HTML_TEMPLATE = """
 </body>
 </html>
 """
+
+
+# ── ACMG and Phenotype endpoints ──
+
+ACMG_CLASSIFIER = None
+PATIENT_MATCHER = None
+
+
+@app.on_event("startup")
+async def startup_acmg():
+    global ACMG_CLASSIFIER, PATIENT_MATCHER
+    
+    try:
+        from vus_meta.acmg import ACMGClassifier
+        ACMG_CLASSIFIER = ACMGClassifier()
+        logger.info("ACMG classifier loaded")
+    except Exception as e:
+        logger.warning(f"ACMG classifier not available: {e}")
+    
+    try:
+        from vus_meta.phenotype import PatientVariantMatcher
+        PATIENT_MATCHER = PatientVariantMatcher()
+        PATIENT_MATCHER.load_data(
+            hpo_obo_path="data/raw/hp.obo",
+            genes_to_phenotype_path="data/raw/genes_to_phenotype.txt",
+        )
+        logger.info("Patient-variant matcher loaded")
+    except Exception as e:
+        logger.warning(f"Patient-variant matcher not available: {e}")
+
+
+class ACMGQuery(BaseModel):
+    gene: str
+    variant_type: str  # missense, nonsense, frameshift, splice, synonymous
+    ref_aa: Optional[str] = None
+    alt_aa: Optional[str] = None
+    position: Optional[int] = None
+    gnomad_af: Optional[float] = None
+    computational_score: Optional[float] = None
+    alphamissense_score: Optional[float] = None
+    phylop_score: Optional[float] = None
+    spliceai_score: Optional[float] = None
+
+
+class PhenotypeQuery(BaseModel):
+    patient_hpo: list[str]  # List of HPO term IDs
+    variants: list[dict]  # List of {gene, variant, variant_type, pathogenicity_score}
+
+
+@app.post("/api/acmg")
+async def api_acmg(query: ACMGQuery):
+    """Classify a variant using ACMG/AMP criteria."""
+    if ACMG_CLASSIFIER is None:
+        raise HTTPException(503, "ACMG classifier not loaded")
+    
+    result = ACMG_CLASSIFIER.classify(
+        gene=query.gene,
+        variant_type=query.variant_type,
+        ref_aa=query.ref_aa,
+        alt_aa=query.alt_aa,
+        aa_pos=query.position,
+        gnomad_af=query.gnomad_af,
+        computational_score=query.computational_score,
+        alphamissense_score=query.alphamissense_score,
+        phylop_score=query.phylop_score,
+        spliceai_score=query.spliceai_score,
+    )
+    
+    return result.to_dict()
+
+
+@app.post("/api/phenotype-match")
+async def api_phenotype_match(query: PhenotypeQuery):
+    """Rank variants by phenotype match for a patient."""
+    if PATIENT_MATCHER is None:
+        raise HTTPException(503, "Phenotype matcher not loaded")
+    
+    from vus_meta.phenotype import CandidateVariant
+    
+    candidates = []
+    for v in query.variants:
+        candidates.append(CandidateVariant(
+            gene=v.get('gene', ''),
+            variant_description=v.get('variant', ''),
+            variant_type=v.get('variant_type', 'missense'),
+            pathogenicity_score=v.get('pathogenicity_score', 0.5),
+        ))
+    
+    ranked = PATIENT_MATCHER.rank_variants(query.patient_hpo, candidates)
+    
+    return [
+        {
+            "rank": rv.rank,
+            "gene": rv.variant.gene,
+            "variant": rv.variant.variant_description,
+            "combined_score": round(rv.combined_score, 4),
+            "phenotype_score": round(rv.phenotype_score, 4),
+            "pathogenicity_score": round(rv.pathogenicity_score, 4),
+            "gene_disease_score": round(rv.gene_disease_score, 4),
+            "matched_hpo_terms": rv.matched_hpo_terms[:5],
+            "explanation": rv.explanation,
+        }
+        for rv in ranked
+    ]
+
+
+@app.get("/api/hpo/search/{query}")
+async def api_hpo_search(query: str):
+    """Search HPO terms by name."""
+    if PATIENT_MATCHER is None:
+        raise HTTPException(503, "HPO data not loaded")
+    
+    results = PATIENT_MATCHER.search_hpo(query)
+    return [{"id": hpo_id, "name": name} for hpo_id, name in results]
