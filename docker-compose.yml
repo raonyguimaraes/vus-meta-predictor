@@ -1,0 +1,31 @@
+# VUS Meta-Predictor — Docker Compose
+# 
+# Quick start:
+#   docker compose up
+#
+# With data download:
+#   docker compose run --rm app python scripts/download_all_data.py
+#   docker compose up
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app/src
+      - LOG_LEVEL=INFO
+    restart: unless-stopped
+    
+  # One-shot data download service
+  download:
+    build: .
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONPATH=/app/src
+    command: python scripts/download_all_data.py
+    profiles:
+      - setup

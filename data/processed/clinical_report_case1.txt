@@ -1,0 +1,165 @@
+
+╔══════════════════════════════════════════════════════════════════╗
+║              CLINICAL VARIANT INTERPRETATION REPORT              ║
+╠══════════════════════════════════════════════════════════════════╣
+║  Patient:    CASE-2026-0042                                    ║
+║  Test:       Clinical Exome Sequencing                         ║
+║  Date:       2026-07-27                                        ║
+║  Indication: Epileptic encephalopathy, developmental regression║
+╚══════════════════════════════════════════════════════════════════╝
+
+══ CLINICAL INDICATION ══
+
+  Patient demographics: 3 years, Male
+  Indication: Epileptic encephalopathy, developmental regression
+
+  Phenotype (HPO terms):
+    • Seizure (HP:0001250)
+    • Intellectual disability (HP:0001249)
+    • Muscular hypotonia (HP:0001252)
+    • Absent speech (HP:0001344)
+    • Developmental regression (HP:0002376)
+
+  Family history: No family history of epilepsy. Non-consanguineous parents.
+
+══ RESULTS SUMMARY ══
+
+  Variants analyzed: 3
+  Pathogenic/Likely Pathogenic: 3
+  Uncertain Significance: 0
+  Benign/Likely Benign: 0
+
+  ⚠️  REPORTABLE FINDINGS:
+    → SCN1A p.Arg1648Cys — Likely Pathogenic
+      Phenotype match: HP:0001250 (Seizure), HP:0001249 (Intellectual disability), HP:0001252 (Hypotonia)
+    → MECP2 p.Arg133Cys — Likely Pathogenic
+      Phenotype match: HP:0001250 (Seizure), HP:0001249 (Intellectual disability), HP:0001252 (Hypotonia)
+    → CACNA1A p.Arg1667Trp — Likely Pathogenic
+      Phenotype match: HP:0001250 (Seizure), HP:0001249 (Intellectual disability), HP:0001252 (Hypotonia)
+
+══ VARIANT 1: SCN1A p.Arg1648Cys ══
+
+  Gene:           SCN1A
+  Variant:        p.Arg1648Cys (missense)
+  Classification: Likely Pathogenic
+
+  Computational Evidence:
+    Meta-predictor score: 0.950
+    AlphaMissense: 0.902 (pathogenic)
+    ESM-2 LLR: -6.50 (disfavored by evolution)
+    phyloP conservation: 7.00 (highly conserved)
+    gnomAD: Not observed (absent from population databases)
+
+  ACMG Evidence (points: +7.0 / -0.0):
+    🔴 PM2 (Moderate): Absent from controls (or extremely low frequency)
+       Detail: Not found in gnomAD
+    🔴 PP2 (Supporting): Missense variant in gene with low rate of benign missense variation
+       Detail: SCN1A is known missense-sensitive gene
+    🔴 PP3 (Strong): Computational evidence supports a deleterious effect
+       Detail: Meta-predictor: 0.950; AlphaMissense: 0.902 (pathogenic); phyloP: 7.00 (highly conserved)
+
+  Phenotype Relevance:
+    Rank: #1 of candidates
+    Phenotype match score: 100.0%
+    Matching phenotypes:
+      • HP:0001250 (Seizure)
+      • HP:0001249 (Intellectual disability)
+      • HP:0001252 (Hypotonia)
+      • HP:0001344 (Absent speech)
+      • HP:0002376 (Developmental regression)
+
+  Interpretation:
+    The missense variant p.Arg1648Cys in SCN1A is classified as LIKELY PATHOGENIC. Multiple lines of computational evidence support a deleterious effect (meta-predictor score: 0.950). This variant is absent or extremely rare in population databases. Clinical correlation and potentially functional studies are recommended to confirm pathogenicity.
+
+══ VARIANT 2: MECP2 p.Arg133Cys ══
+
+  Gene:           MECP2
+  Variant:        p.Arg133Cys (missense)
+  Classification: Likely Pathogenic
+
+  Computational Evidence:
+    Meta-predictor score: 0.880
+    AlphaMissense: 0.836 (pathogenic)
+    ESM-2 LLR: -2.00 (mildly disfavored by evolution)
+    phyloP conservation: 7.00 (highly conserved)
+    gnomAD: Not observed (absent from population databases)
+
+  ACMG Evidence (points: +6.0 / -0.0):
+    🔴 PM2 (Moderate): Absent from controls (or extremely low frequency)
+       Detail: Not found in gnomAD
+    🔴 PP3 (Strong): Computational evidence supports a deleterious effect
+       Detail: Meta-predictor: 0.880; AlphaMissense: 0.836 (pathogenic); phyloP: 7.00 (highly conserved)
+
+  Phenotype Relevance:
+    Rank: #2 of candidates
+    Phenotype match score: 100.0%
+    Matching phenotypes:
+      • HP:0001250 (Seizure)
+      • HP:0001249 (Intellectual disability)
+      • HP:0001252 (Hypotonia)
+      • HP:0001344 (Absent speech)
+      • HP:0002376 (Developmental regression)
+
+  Interpretation:
+    The missense variant p.Arg133Cys in MECP2 is classified as LIKELY PATHOGENIC. Multiple lines of computational evidence support a deleterious effect. This variant is absent or extremely rare in population databases. Clinical correlation and potentially functional studies are recommended to confirm pathogenicity.
+
+══ VARIANT 3: CACNA1A p.Arg1667Trp ══
+
+  Gene:           CACNA1A
+  Variant:        p.Arg1667Trp (missense)
+  Classification: Likely Pathogenic
+
+  Computational Evidence:
+    Meta-predictor score: 0.820
+    AlphaMissense: 0.779 (pathogenic)
+    ESM-2 LLR: -2.00 (mildly disfavored by evolution)
+    phyloP conservation: 7.00 (highly conserved)
+    gnomAD: Not observed (absent from population databases)
+
+  ACMG Evidence (points: +7.0 / -0.0):
+    🔴 PM2 (Moderate): Absent from controls (or extremely low frequency)
+       Detail: Not found in gnomAD
+    🔴 PP2 (Supporting): Missense variant in gene with low rate of benign missense variation
+       Detail: CACNA1A is known missense-sensitive gene
+    🔴 PP3 (Strong): Computational evidence supports a deleterious effect
+       Detail: Meta-predictor: 0.820; AlphaMissense: 0.779 (pathogenic); phyloP: 7.00 (highly conserved)
+
+  Phenotype Relevance:
+    Rank: #3 of candidates
+    Phenotype match score: 100.0%
+    Matching phenotypes:
+      • HP:0001250 (Seizure)
+      • HP:0001249 (Intellectual disability)
+      • HP:0001252 (Hypotonia)
+      • HP:0001344 (Absent speech)
+      • HP:0002376 (Developmental regression)
+
+  Interpretation:
+    The missense variant p.Arg1667Trp in CACNA1A is classified as LIKELY PATHOGENIC. Multiple lines of computational evidence support a deleterious effect. This variant is absent or extremely rare in population databases. Clinical correlation and potentially functional studies are recommended to confirm pathogenicity.
+
+══ METHODOLOGY ══
+
+  Variant interpretation was performed using the VUS Meta-Predictor pipeline:
+  
+  • ESM-2 protein language model (35M parameters) for evolutionary fitness
+  • AlphaMissense (DeepMind) pathogenicity scores
+  • phyloP 100-way vertebrate conservation scores
+  • Amino acid physicochemical property analysis (Grantham distance)
+  • Gene-level constraint metrics from ClinVar
+  • ACMG/AMP criteria applied per Richards et al. (2015) guidelines
+  • Phenotype matching using Human Phenotype Ontology (HPO) with
+    Resnik semantic similarity
+  
+  Classification follows the ACMG/AMP 5-tier system with Bayesian
+  point-based evidence combining (Tavtigian et al. 2018).
+
+══ DISCLAIMER ══
+
+  This report is generated by an automated computational pipeline and 
+  is intended to assist clinical interpretation. It does NOT constitute 
+  a clinical diagnosis. All findings should be reviewed by a qualified 
+  molecular geneticist or genetic counselor. Variants of clinical 
+  significance should be confirmed by an independent method.
+  
+  Report generated by VUS Meta-Predictor v1.0
+  https://github.com/raonyguimaraes/vus-meta-predictor
